@@ -2,6 +2,15 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+
+import os
+
+EMAIL_USER = os.getenv('EMAIL_USER')
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+
+# Use these variables in your email configuration
+
+
 def send_email(sender_email, sender_password, recipient_email, subject, body):
     # Create a multipart email
     msg = MIMEMultipart()
@@ -24,8 +33,8 @@ def send_email(sender_email, sender_password, recipient_email, subject, body):
 
 
 if __name__ == "__main__":
-    sender_email = "vijaythoratvt00@gmail.com"
-    sender_password = "czztmesocymlylcz"
+    sender_email = EMAIL_USER
+    sender_password = EMAIL_PASSWORD
     recipient_email = "vijay.thorat@biddano.com"
     subject = "Test Email for terrafom"
     body = "This is a test email sent from Python."
