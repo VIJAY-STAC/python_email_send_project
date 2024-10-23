@@ -22,7 +22,7 @@ def send_email(sender_email, sender_password, recipient_email, subject, body):
     except Exception as e:
         print(f"Failed to send email: {e}")
 
-# Example usage
+
 if __name__ == "__main__":
     sender_email = "vijaythoratvt00@gmail.com"
     sender_password = "czztmesocymlylcz"
