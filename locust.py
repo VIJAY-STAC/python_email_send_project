@@ -9,7 +9,7 @@ import os
 
 class AddToCartUser(HttpUser):
     wait_time = between(1, 5)
-    token = 'jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiY2VmOWEwNzQtNTJhZS00NGQ3LTg5YzQtM2ZhMDMxODllNWE5IiwiZXhwIjoxNzMwMjQzNTA2LCJ1c2VyX3R5cGUiOiJpbnRlcm5hbCIsInJvbGVzIjpbImFkbWluIl0sInNlc3Npb25fa2V5IjoiYjEyYzljMTNhY2YxYmMwZmMxNTkwNjZmYmFjZjI1MmMyNzU0ODhhYWM4ZDhmYjVkMjFmMjVkNTQ1ZTU0YWY3MyJ9.Msx-BSAmeS5mn03M3SobwSTPF330Be94aPLQ0eP3dQE'
+    token = "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2ZlMDBlYjUtN2JjNC00N2JmLWJkZTQtNWIwYTRlYWU1MTRkIiwiZXhwIjoxNzMwMjYyNzI0LCJ1c2VyX3R5cGUiOiJpbnRlcm5hbCIsInJvbGVzIjpbImFkbWluIl0sInNlc3Npb25fa2V5IjoiYmRmNjYwMjhkOGZiMGU2M2JmNWEyODFjNDkyYjY4MjU1NGE2NWNlZDc5NWYyYWI5MTc3ZjRjYzUxNmQ5NWNhYyJ9.sVVQ_tcuRSsqHqpVbKXQjS5JkOqO1wmDXIFR8NFrYT4"
     host = "https://api.ecs.staging.biddano.com"
 
     @task
