@@ -8,8 +8,8 @@ from email import encoders
 import os
 
 class AddToCartUser(HttpUser):
-    wait_time = between(1, 5)
-    token = "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2ZlMDBlYjUtN2JjNC00N2JmLWJkZTQtNWIwYTRlYWU1MTRkIiwiZXhwIjoxNzMwMjYyNzI0LCJ1c2VyX3R5cGUiOiJpbnRlcm5hbCIsInJvbGVzIjpbImFkbWluIl0sInNlc3Npb25fa2V5IjoiYmRmNjYwMjhkOGZiMGU2M2JmNWEyODFjNDkyYjY4MjU1NGE2NWNlZDc5NWYyYWI5MTc3ZjRjYzUxNmQ5NWNhYyJ9.sVVQ_tcuRSsqHqpVbKXQjS5JkOqO1wmDXIFR8NFrYT4"
+    # wait_time = between(1, 5)
+    token = "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2ZlMDBlYjUtN2JjNC00N2JmLWJkZTQtNWIwYTRlYWU1MTRkIiwiZXhwIjoxNzMwMzI3Njg0LCJ1c2VyX3R5cGUiOiJpbnRlcm5hbCIsInJvbGVzIjpbImFkbWluIl0sInNlc3Npb25fa2V5IjoiNDQ5NjcwZGVhZjE1YzUzYWNkZTFkOThlZmNjZWM4Njc3MGRhYjhjNjUzNzI1MjQ5Yzc2NGY3YWMzOGNjMTEzYyJ9.VKeC6PlaYfPkJ0B5GdLA_N_WwfbGl4HqJJvoZN1Nb6Y"
     host = "https://api.ecs.staging.biddano.com"
 
     @task
@@ -25,11 +25,14 @@ class AddToCartUser(HttpUser):
             "quantity": 1
         }
 
-        self.client.post(
+        response= self.client.post(
             url="/api/v4/rust/orders/shortbuk/add_to_cart/",
             headers=headers,
             json=data
         )
+
+        error_message = response.text  # Get the error message from the response
+        print(f"Request failed: {response.status_code}:{error_message}")
 
     @task
     def cart_to_order(self):
@@ -93,6 +96,11 @@ def send_email_with_report(report_path, recipient_email):
         server.quit()
 
         print(f"Email sent to {recipient_email} with attachment {filename}")
+        os.remove("locust_report_stats.csv")
+        os.remove("locust_report_exceptions.csv")
+        os.remove("locust_report_stats_history.csv")
+        os.remove("locust_report_failures.csv")
+
     except Exception as e:
         print(f"Failed to send email: {e}")
 
