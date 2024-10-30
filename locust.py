@@ -96,10 +96,10 @@ def send_email_with_report(report_path, recipient_email):
         server.quit()
 
         print(f"Email sent to {recipient_email} with attachment {filename}")
-        os.remove("locust_report_stats.csv")
-        os.remove("locust_report_exceptions.csv")
-        os.remove("locust_report_stats_history.csv")
-        os.remove("locust_report_failures.csv")
+        # os.remove("locust_report_stats.csv")
+        # os.remove("locust_report_exceptions.csv")
+        # os.remove("locust_report_stats_history.csv")
+        # os.remove("locust_report_failures.csv")
 
     except Exception as e:
         print(f"Failed to send email: {e}")
